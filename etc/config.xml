@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ponderosa_wordpress_integration>
+            <ponderosa_wp_integration_settings>
+                <wp_blog_path>blog</wp_blog_path>
+                <wp_max_posts_per_page>6</wp_max_posts_per_page>
+                <wp_max_pagination_links>5</wp_max_pagination_links>
+                <wp_post_date_format>d/m/y</wp_post_date_format>
+                <wp_default_author>Author</wp_default_author>
+            </ponderosa_wp_integration_settings>
+        </ponderosa_wordpress_integration>
+    </default>
+</config>

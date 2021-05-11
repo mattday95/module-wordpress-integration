@@ -1,0 +1,53 @@
+<?php
+
+$posts = $block->getLatestPosts() ? json_decode( $block->getLatestPosts() ) : null;
+
+if($posts){ ?>
+
+<div class="ponderosa-blog-archive-list">
+
+    <?php foreach($posts as $post){
+
+        $author = $block->apiHelper->getResourceById('users', $post->author) ? $block->apiHelper->getResourceById('users', $post->author) : $block->apiHelper->getDefaultAuthor();
+
+        ?>
+
+        <div class="ponderosa-blog-archive-list__post ponderosa-blog-archive-post">
+            <div class="ponderosa-blog-archive-post__featured-image">
+                <a href="<?= $block->getBaseUrl().$block->apiHelper->getBlogSlug().'/'.$post->slug;?>">
+                    <?php if( $post->featured_media ){ ?>
+
+                        <img src="<?= $block->apiHelper->getResourceById('media', $post->featured_media);?>"/>
+
+                    <?php } else {
+                        echo $block->scrapeImageFromContent($post->content->rendered);
+                    } ?>
+                </a>
+            </div>
+            <div class="ponderosa-blog-archive-post__content">
+                <span class="ponderosa-post-category"><?= $block->getCategoryNicename( $post->categories[0] );?></span>
+                <h2 class="ponderosa-post-title">
+                    <a href="<?= $block->getBaseUrl().$block->apiHelper->getBlogSlug().'/'.$post->slug;?>"><?= $post->title->rendered;?></a>
+                </h2>
+                <span class="ponderosa-post-author"><?= $author;?></span>
+                <span class="ponderosa-post-author"><?= $block->apiHelper->getNiceDate($post->date);?></span>
+            </div>
+        </div>
+
+    <?php } ?>
+
+    </div>
+
+<?php }
+
+else {
+
+    echo 'Oops! Looks like no posts exist for this page!';
+
+    // $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    // $redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+    // $redirect->setRedirect($block->getBaseUrl().$block->apiHelper->getBlogSlug());
+
+}
+
+?>

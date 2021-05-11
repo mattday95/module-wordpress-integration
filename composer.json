@@ -1,0 +1,20 @@
+{
+    "name": "ponderosa/module-wordpress-integration",
+    "description": "Integrates your Magento 2 installation with a Wordpress blog.",
+    "require": {
+        "php": "~7.1.0|~7.2.0|~7.3.0|~7.4.0"
+    },
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ponderosa\\WordpressIntegration\\": ""
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Ponderosa
+ *
+ * Do not edit or add to this file if you wish to upgrade the to newer versions in the future.
+ * If you wish to customize this module for your needs.
+ *
+ * @category  Ponderosa
+ * @package   Ponderosa_WordpressIntegration
+ * @copyright Copyright (C) 2021 Ponderosa (https: //ponderosa.agency/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Ponderosa_WordpressIntegration" setup_version="1.0.1" />
+</config>

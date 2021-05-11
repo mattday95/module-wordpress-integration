@@ -1,0 +1,39 @@
+<?php
+
+    $post = $block->getPostContent();
+    $featuredImage = $post->featured_media ? $block->apiHelper->getResourceById('media', $post->featured_media) : $block->scrapeImageFromContent($post->content->rendered);
+    $author = $block->apiHelper->getResourceById('users', $post->author) ? $block->apiHelper->getResourceById('users', $post->author) : $block->apiHelper->getDefaultAuthor();
+
+?>
+
+<div class="ponderosa-blog-post-header">
+
+    <?php if($featuredImage):?>
+
+    <div class="ponderosa-blog-post-header__featured-image">
+
+        <?php if ($post->featured_media) {?>
+
+            <img src="<?=$featuredImage;?>"/>
+
+        <?php } else {
+
+            echo $featuredImage;
+
+        }?>
+    </div>
+
+    <?php endif;?>
+
+    <div class="ponderosa-blog-post-header__headline">
+        <span class="ponderosa-post-category"><?= $block->getCategoryNicename( $post->categories[0] );?></span>
+        <h1><?= $post->title->rendered;?></h1>
+        <span class="ponderosa-post-author">By <?= $author;?></span>
+        <span class="ponderosa-post-date"><?= $block->apiHelper->getNiceDate($post->date);?></span>
+    </div>
+
+</div>
+
+<div class="ponderosa-blog-post-content">
+    <?= $post->content->rendered;?>
+</div>

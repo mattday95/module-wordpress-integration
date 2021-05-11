@@ -1,0 +1,11 @@
+.ponderosa-extensions-tab .admin__page-nav-title {
+    padding: 1.8rem 1.5rem 1.8rem calc(1.8rem + 40px);
+    background-image: url(../images/logo-p.svg) !important;
+    background-size: 20px !important;
+    background-position: 20px 50% !important;
+    background-repeat: no-repeat !important;
+}
+
+.ponderosa-extensions-tab .admin__page-nav-item._active {
+    border-color: #fdd000;
+}

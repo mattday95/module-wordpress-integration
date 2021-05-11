@@ -1,0 +1,70 @@
+<?php
+/** @var \Ponderosa\WordpressIntegration\Block\Template $block */
+
+$apiUrl = $block->getApiUrl();
+$maxPosts = $block->getMaxPosts();
+$latestPosts = $block->getLatestPosts() ? json_decode($block->getLatestPosts()) : null;
+
+// If a posts json file doesnt exist, render the latest post block on the fly in the browser
+if(!$latestPosts){
+
+$data = array(
+    "app" => array(
+        "api" => $apiUrl,
+        "postCount" => $maxPosts ? intval($maxPosts) : -1
+    )
+);
+
+?>
+
+<div class="ponderosa-latest-posts" data-mage-init='<?= json_encode($data);?>'>
+    <div class="ponderosa-latest-posts__posts-container"></div>
+</div>
+
+<?php }
+
+// A reference json file does exist, so just render the block statically.
+
+else {
+
+
+?>
+
+    <div class="ponderosa-latest-posts">
+        <div class="ponderosa-latest-posts__posts-container">
+            <?php foreach($latestPosts as $key => $post){
+
+                if($key < $maxPosts ) { ?>
+
+                <div class="ponderosa-latest-posts__post ponderosa-post-card">
+                    <a href="<?= $block->getBaseUrl().$block->apiHelper->getBlogSlug().'/'.$post->slug;?>">
+                        <div class="ponderosa-post-card__image">
+                            <?php if( $post->featured_media ){ ?>
+                                <img src="<?= $post->featured_media ? $post->featured_media : 'https://via.placeholder.com/300';?>"/>
+                            <?php }
+                                else {
+                                    echo $block->scrapeImageFromContent($post->content->rendered);
+                                } ?>
+                        </div>
+                        <div class="ponderosa-post-card__content">
+                            <h2><?= $post->title->rendered;?></h2>
+                            <div class="ponderosa-post-card__excerpt">
+                                <?= $post->excerpt->rendered;?>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <?php }
+
+                else {
+
+                    break;
+
+                } ?>
+
+            <?php } ?>
+        </div>
+    </div>
+
+<?php }

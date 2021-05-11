@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="ponderosa_extensions" translate="label" sortOrder="10" class="ponderosa-extensions-tab">
+            <label>Ponderosa Extensions</label>
+        </tab>
+        <section id="ponderosa_wordpress_integration" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Wordpress Integration</label>
+            <tab>ponderosa_extensions</tab>
+            <resource>Ponderosa_WordpressIntegration::acl_rule</resource>
+            <group id="ponderosa_wp_integration_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>WP Integration Settings</label>
+                <field id="wp_blog_path" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Blog Path String</label>
+                    <comment>Where should your blog live (default /blog)?</comment>
+                </field>
+                <field id="wp_rest_api_posts_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Wordpress Rest API Posts URL</label>
+                    <comment>Please provide the full url for the api endpoint that displays the blog posts.</comment>
+                </field>
+                <field id="wp_rest_api_categories_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Wordpress Rest API Categories URL</label>
+                    <comment>Please provide the full url for the api endpoint that displays the blog post categories.</comment>
+                </field>
+                <field id="wp_post_date_format" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Wordpress Post Date Format</label>
+                </field>
+                <field id="wp_default_author" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Wordpress Default Author</label>
+                    <comment>Provide a fallback author name for all posts if no author can be pulled from the api.</comment>
+                </field>
+                <field id="wp_latest_posts_display_num" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Number of latest posts to display</label>
+                    <validate>validate-digits validate-not-negative-number</validate>
+                    <comment>The number of latest posts to display on the front end.</comment>
+                </field>
+                <field id="wp_max_posts_per_page" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Maximum number of posts to display on the archive page</label>
+                    <validate>validate-digits validate-not-negative-number</validate>
+                </field>
+                <field id="wp_max_pagination_links" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Maximum number of pagination links to display on the archive page</label>
+                    <validate>validate-digits validate-not-negative-number</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
